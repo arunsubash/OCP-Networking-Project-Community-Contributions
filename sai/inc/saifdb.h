@@ -120,21 +120,16 @@ typedef enum _sai_fdb_flush_entry_type_t
 /*
 * Attribute for FDB delete. These can be used in the following combinations
 * in the flush API
-* 1) Flush all entries in fdb table SAI_FDB_FLUSH_ATTR_ALL
+* 1) Flush all entries in fdb table - Set SAI_FDB_FLUSH_ATTR_ENTRY_TYPE with
+*    value of SAI_FDB_FLUSH_ENTRY_ALL
 * 2) Flush all entries by port - SAI_FDB_FLUSH_ATTR_PORT_ID
 * 3) Flush all entries by VLAN - SAI_FDB_FLUSH_ATTR_VLAN_ID
 * 4) Flush all entries by port VLAN - SAI_FDB_FLUSH_ATTR_PORT_ID,
 *    SAI_FDB_FLUSH_ATTR_VLAN_ID
 * Additionally the type of entry needs to be flushed can be specified
-  using SAI_FDB_FLUSH_ATTR_ENTRY_TYPE which can be static or dynamic or all
+* using SAI_FDB_FLUSH_ATTR_ENTRY_TYPE which can be static or dynamic or all
 */
 typedef enum _sai_fdb_flush_attr {
-
-   /*Flush based all entries. No value required*/
-   SAI_FDB_FLUSH_ATTR_ALL,
-
-   /*Flush based on MAC [sai_mac_t]*/
-   SAI_FDB_FLUSH_ATTR_MAC,
 
    /*Flush based on port [sai_object_id_t]*/
    SAI_FDB_FLUSH_ATTR_PORT_ID,
