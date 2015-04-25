@@ -115,10 +115,11 @@ typedef enum _sai_acl_table_attr_t
      *  SAI_SWITCH_ATTR_ACL_TABLE_MAXIMUM_PRIORITY] */
     SAI_ACL_TABLE_ATTR_PRIORITY,
 
-    /* Table size [sai_uint32_t]
-     * By default table can grow upto maximum ACL TCAM space. Supported
-     * only during Table Create unless NPU supports Dynamic adjustment 
-     * of Table size post Table creation */
+    /* Table size [sai_uint32_t], CREATE_ONLY 
+     * (default = 0) - Grow dynamically till MAX ACL TCAM Size
+     * By default table can grow upto maximum ACL TCAM space. 
+     * Supported only during Table Create for now until NPU 
+     * supports Dynamic adjustment of Table size post Table creation */
     SAI_ACL_TABLE_ATTR_SIZE,
 
     /* Match fields [bool] 
