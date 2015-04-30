@@ -119,7 +119,21 @@ typedef enum _sai_acl_table_attr_t
      * (default = 0) - Grow dynamically till MAX ACL TCAM Size
      * By default table can grow upto maximum ACL TCAM space. 
      * Supported only during Table Create for now until NPU 
-     * supports Dynamic adjustment of Table size post Table creation */
+     * supports Dynamic adjustment of Table size post Table creation 
+     *
+     * The table size refers to the number of ACL entries. The number 
+     * of entries that get's allocated when we create a table with a 
+     * specific size would depend on the ACL CAM Arch of the NPU. Some 
+     * NPU supports different blocks, each may have same or different 
+     * size and what gets allocated can depend on the block size or other 
+     * factors. So internally what gets allocated when we do a table 
+     * create would be based on the NPU CAM Arch and size may be more 
+     * than what is requested. As an example the NPU may support blocks of
+     * 128 entries. When a user creates a table of size 100, the actual
+     * size that gets allocated is 128. Hence its recommended that the user
+     * does a get_attribute(SAI_ACL_TABLE_ATTR_SIZE) to query the actual 
+     * table size on table create so the user knows the ACL CAM space 
+     * allocated and able to do ACL CAM Carving accurately */
     SAI_ACL_TABLE_ATTR_SIZE,
 
     /* Match fields [bool] 
